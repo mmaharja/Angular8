@@ -7,6 +7,8 @@ import { HomeComponent } from './home';
 import { RegisterComponent } from './register';
 import { LoginComponent } from './login';
 import { mockHttpInterceptor } from './helpers/mockBackend';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { mockHttpInterceptor } from './helpers/mockBackend';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     mockHttpInterceptor
