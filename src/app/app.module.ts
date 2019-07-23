@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { RegisterComponent } from './register';
 import { LoginComponent } from './login';
+import { mockHttpInterceptor } from './helpers/mockBackend';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { LoginComponent } from './login';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    mockHttpInterceptor
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
