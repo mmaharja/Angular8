@@ -7,8 +7,9 @@ import { HomeComponent } from './home';
 import { RegisterComponent } from './register';
 import { LoginComponent } from './login';
 import { mockHttpInterceptor } from './helpers/mockBackend';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms'
+import { JwtInterceptor, ErrorInterceptor } from './helpers';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { ReactiveFormsModule } from '@angular/forms'
     HttpClientModule
   ],
   providers: [
-    mockHttpInterceptor
+    mockHttpInterceptor,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
